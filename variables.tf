@@ -72,7 +72,7 @@ variable "subnet_tags" {
 variable "azs" {
   type        = list(string)
   description = "A list of availability zones in the region"
-  default     = []
+  default     = ["us-west-2a"]
 }
 
 variable "enable_nat_gateway" {
