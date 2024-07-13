@@ -43,11 +43,6 @@ variable "public_subnets" {
   default     = ["10.100.10.0/24"]
 }
 
-variable "ssm_public_setup" {
-  type        = string
-  description = "install package dependencies to have a SSM compliant instance"
-}
-
 variable "private_subnets" {
   type        = list(string)
   description = "define only if the subnet cannot be autocalculated or if the number of subnets needed is different from the number of azs"
