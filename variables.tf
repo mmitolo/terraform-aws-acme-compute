@@ -24,6 +24,10 @@ variable "instance_tags" {
     type = string
   })
   description = "Object defining tagging strategy to use with ec2 instances. You must set this on a per environment level."
+  default = {
+    tier = "frontend"
+    type = "web"
+  }
 }
 
 variable "ssh_public_key" {
