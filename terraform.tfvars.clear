@@ -1,0 +1,24 @@
+aws_region = ""
+
+default_tags = {
+  owner       = ""
+  environment = ""
+  version     = 1
+}
+
+instance_tags = {
+  tier = ""
+  type = ""
+}
+
+ssh_public_key                   = "ssh-rsa "
+ssm_public_setup                 = ""
+cidr                             = ""
+private_subnets                  = []
+public_subnets                   = []
+azs                              = []
+vpc_tags                         = {}
+subnet_tags                      = {}
+dhcp_options_domain_name_servers = ["AmazonProvidedDNS"]
+hcp_bucket_acme_images           = ""
+hcp_channel                      = ""
