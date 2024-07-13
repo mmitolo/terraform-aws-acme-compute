@@ -1,6 +1,7 @@
 variable "aws_region" {
   type        = string
   description = "AWS Region name to deploy resources in. This must be set on a per environment level."
+  default     = "us-west-2"
 }
 
 variable "default_tags" {
@@ -10,6 +11,11 @@ variable "default_tags" {
     version     = number
   })
   description = "Object defining tagging strategy to use through the entire codebase. You must set this on a per environment level."
+  default = {
+    owner       = "ACME"
+    environment = "lab"
+    version     = 0
+  }
 }
 
 variable "instance_tags" {
@@ -28,12 +34,13 @@ variable "ssh_public_key" {
 variable "cidr" {
   type        = string
   description = "CIDR block to associate with the VPC"
+  default     = "10.100.0.0/16"
 }
 
 variable "public_subnets" {
   type        = list(string)
   description = "define only if the subnet cannot be autocalculated or if the number of subnets needed is different from the number of azs"
-  default     = []
+  default     = ["10.100.10.0/24"]
 }
 
 variable "ssm_public_setup" {
@@ -44,18 +51,23 @@ variable "ssm_public_setup" {
 variable "private_subnets" {
   type        = list(string)
   description = "define only if the subnet cannot be autocalculated or if the number of subnets needed is different from the number of azs"
-  default     = []
+  default     = ["10.100.15.0/24"]
 }
 
 variable "vpc_tags" {
   type        = map(any)
   description = "VPC specific tags"
-
+  default = {
+    network = "aws_prod"
+  }
 }
 
 variable "subnet_tags" {
   type        = map(any)
   description = "subnet specific tags"
+  default = {
+    size = 256
+  }
 }
 
 variable "azs" {
@@ -92,39 +104,39 @@ variable "enable_vpn_gateway" {
 variable "enable_dns_hostnames" {
   type        = bool
   description = "Should be true to enable DNS hostnames in the Default VPC"
-
+  default     = true
 }
 
 variable "enable_dhcp_options" {
   type        = bool
   description = "Should be true if you want to specify a DHCP options set with a custom domain name, DNS servers, NTP servers, netbios servers, and/or netbios server type"
-
+  default     = true
 }
 
 variable "dhcp_options_domain_name_servers" {
   type        = list(string)
   description = "Specify a list of DNS server addresses for DHCP options set, default to AWS provided (requires enable_dhcp_options set to true)"
-
+  default     = ["AmazonProvidedDNS"]
 }
 
-variable "hcp_bucket_acme_images" {
-  type        = string
-  description = "HCP Packer bucket name for hashicups image"
-  default     = "acme-corp-image-mgmt"
-}
-
-variable "hcp_channel" {
-  type        = string
-  description = "HCP Packer channel name"
-  default     = "development"
-}
-
-variable "hcp_client_id" {
-  type = string
-  description = "HashiCorp Cloud Platform client ID"
-}
-
-variable "hcp_client_secret" {
-  type = string
-  description = "HashiCorp Cloud Platform client secret"
-}
+#variable "hcp_bucket_acme_images" {
+#  type        = string
+#  description = "HCP Packer bucket name for hashicups image"
+#  default     = "acme-corp-image-mgmt"
+#}
+#
+#variable "hcp_channel" {
+#  type        = string
+#  description = "HCP Packer channel name"
+#  default     = "development"
+#}
+#
+#variable "hcp_client_id" {
+#  type = string
+#  description = "HashiCorp Cloud Platform client ID"
+#}
+#
+#variable "hcp_client_secret" {
+#  type = string
+#  description = "HashiCorp Cloud Platform client secret"
+#}
