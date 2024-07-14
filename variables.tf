@@ -119,24 +119,14 @@ variable "dhcp_options_domain_name_servers" {
   default     = ["AmazonProvidedDNS"]
 }
 
-#variable "hcp_bucket_acme_images" {
-#  type        = string
-#  description = "HCP Packer bucket name for hashicups image"
-#  default     = "acme-corp-image-mgmt"
-#}
-#
-#variable "hcp_channel" {
-#  type        = string
-#  description = "HCP Packer channel name"
-#  default     = "development"
-#}
-#
-#variable "hcp_client_id" {
-#  type = string
-#  description = "HashiCorp Cloud Platform client ID"
-#}
-#
-#variable "hcp_client_secret" {
-#  type = string
-#  description = "HashiCorp Cloud Platform client secret"
-#}
+variable "hcp_bucket_acme_images" {
+  type        = string
+  description = "HCP Packer bucket name for hashicups image"
+  default     = "acme-corp-image-mgmt"
+}
+
+variable "hcp_channel" {
+  type        = string
+  description = "HCP Packer channel name"
+  default     = "development"
+}

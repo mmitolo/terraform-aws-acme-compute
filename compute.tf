@@ -88,7 +88,8 @@ module "ec2" {
 
   name = "${var.default_tags.owner}-${each.key}"
 
-  ami                         = data.aws_ami.ubuntu.id
+  #ami                         = data.aws_ami.ubuntu.id
+  ami                         = data.hcp_packer_artifact.aws_ubuntu_acme_frontend_img.external_identifier
   instance_type               = each.value.instance_type
   availability_zone           = each.value.availability_zone
   subnet_id                   = each.value.subnet_id
