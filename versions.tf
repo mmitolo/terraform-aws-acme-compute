@@ -1,9 +1,9 @@
 terraform {
   cloud {
-    organization = "acme-corp-tfc"
+    organization = "acme-corp-hcp"
 
     workspaces {
-      name = "acme-corp-tfc-aws"
+      name = "terraform-aws-acme-compute"
     }
   }
   required_providers {
@@ -26,4 +26,6 @@ provider "aws" {
   }
 }
 
-provider "hcp" {}
+provider "hcp" {
+  project_id = "base-ubuntu-amd64-img"
+}
