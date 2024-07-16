@@ -1,4 +1,4 @@
-## Terraform & Packer demo
+## Terraform & Packer demo - AWS
 
 Welcome to the Terraform & Packer demo repository.
 
