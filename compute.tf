@@ -72,7 +72,7 @@ resource "aws_iam_policy" "public_ssm_policy" {
 locals {
   public_instances = {
     frontend = {
-      instance_type     = "t3.micro"
+      instance_type     = "t3.small"
       availability_zone = element(module.vpc.azs, 0)
       subnet_id         = element(module.vpc.public_subnets, 0)
       private_ip        = cidrhost(element(module.vpc.public_subnets_cidr_blocks, 0), 9)
